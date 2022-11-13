@@ -18,7 +18,9 @@ class App extends Component {
   }
 }
 
-class AddTrip extends Component {}
+class AddTrip extends Component {
+  
+}
 
 class TripHistory extends Component {}
 
