@@ -13,15 +13,30 @@ class App extends Component {
         <h2>Track your Co2 Savings From Biking</h2>
         <hr />
         <AddTrip />
+        <hr />
+        <TripHistory />
       </div>
     );
   }
 }
 
 class AddTrip extends Component {
-  
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return <div>Add New Trip Here</div>;
+  }
 }
 
-class TripHistory extends Component {}
+class TripHistory extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <div> See Old Trips Here </div>;
+  }
+}
 
 export default App;
