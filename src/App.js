@@ -26,7 +26,13 @@ class AddTrip extends Component {
   }
 
   render() {
-    return <div>Add New Trip Here</div>;
+    return(
+      <div>
+        <input type="text" placeholder="Trip Name"/>
+        <input type="number" placeholder="Distance in km"/>
+        <button> Add Trip </button>
+      </div>
+    );
   }
 }
 
@@ -35,7 +41,9 @@ class TripHistory extends Component {
     super(props);
   }
   render() {
-    return <div> See Old Trips Here </div>;
+    return(
+      <div> See Old Trips Here </div>
+    );
   }
 }
 
