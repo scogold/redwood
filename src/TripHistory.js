@@ -13,6 +13,7 @@ class TripHistory extends Component {
     super(props);
   }
   render() {
+    const tripHistoryList = this.props.tripHistoryList;
     // The table takes the data of the trips as input and maps it so that
     // it is displayed in the right column.
     // Source for CO2 factor: https://www.nimblefins.co.uk/average-co2-emissions-car-uk
@@ -32,9 +33,9 @@ class TripHistory extends Component {
             <tr>
               <td>First trip</td>
               <td>20 km</td>
-              <td>1 kg</td>
+              <td>{20 * 138.4} g</td>
             </tr>
-            {trips.map((t) => (
+            {tripHistoryList.map((t) => (
               <tr key={t.tid}>
                 <td>{t.tname}</td>
                 <td>
@@ -48,6 +49,9 @@ class TripHistory extends Component {
         </table>
       </div>
     );
+    // The factor for the CO2 emissions stays the same.
+    // Thereby it can be avoided to save the data in the database.
+    // For now it is only calculated on rendering. We could change that to make achievements easier.
   }
 }
 
