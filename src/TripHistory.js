@@ -21,7 +21,7 @@ class TripHistory extends Component {
       <div>
         <p> See the trip hisotry: </p>
 
-        <table border="1">
+        <table>
           <thead>
             <tr>
               <th>Name</th>
