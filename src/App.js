@@ -13,6 +13,7 @@ class App extends Component {
     this.updateEnteredName = this.updateEnteredName.bind(this);
     this.updateEnteredDist = this.updateEnteredDist.bind(this);
   }
+  // function that triggers on the "Add Trip" button.
   updateTripList() {
     console.log(this.state.enteredName);
     console.log(this.state.enteredDist);
