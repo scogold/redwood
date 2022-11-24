@@ -42,7 +42,6 @@ class App extends Component {
     this.setState({ enteredDist: event.target.value });
   }
 
-  // Render the components for adding trips and displaying all trips in a table.
   render() {
     return (
       <div className="App">
