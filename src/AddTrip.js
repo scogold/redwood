@@ -14,8 +14,10 @@ class AddTrip extends Component {
     const enterFun = this.props.enterFun;
     const nameDisplayProp = this.props.displayNameFromApp;
     const distDisplayProp = this.props.displayDistFromApp;
+    const unitDisplayProp = this.props.displayUnitFromApp;
     const nameUpdateFun = this.props.changeFun1;
     const distUpdateFun = this.props.changeFun2;
+    const unitUpdateFun = this.props.changeFun3;
     return (
       <div>
         <h1>Entry Form</h1>
@@ -35,6 +37,10 @@ class AddTrip extends Component {
               value={distDisplayProp}
               onChange={distUpdateFun}
             />
+            <select value={unitDisplayProp} onChange={unitUpdateFun}>
+              <option> km </option>
+              <option> m </option>
+            </select>
           </form>
           <button onClick={enterFun}> Add Trip </button>
         </div>
