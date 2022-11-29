@@ -20,11 +20,22 @@ class App extends Component {
     console.log(this.state.enteredUnit);
     console.log(this.state.tripList);
     console.log(this.state.tripList.length);
+    
+    var co2_savings;
+    
+    if(this.state.enteredUnit === "m"){
+      co2_savings = (this.state.enteredDist * 138.4) / 1000
+    }
+    else{ //for km 
+      co2_savings = this.state.enteredDist * 138.4
+    }
+    
     let newTrip = {
       tid: this.state.tripList.length + 1,
       tname: this.state.enteredName,
       distance: this.state.enteredDist,
       unit: this.state.enteredUnit,
+      co2: Math.round(co2_savings*100)/100 //Round to 2 digits
     };
     console.log(newTrip);
     this.setState({
