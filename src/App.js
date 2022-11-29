@@ -8,21 +8,23 @@ import { trips } from "./trips";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { tripList: trips, enteredName: "", enteredDist: 0 };
+    this.state = { tripList: trips, enteredName: "", enteredUnit: "km", enteredDist: 0 };
     this.updateTripList = this.updateTripList.bind(this);
     this.updateEnteredName = this.updateEnteredName.bind(this);
     this.updateEnteredDist = this.updateEnteredDist.bind(this);
+    this.updateEnteredUnit = this.updateEnteredUnit.bind(this);
   }
   updateTripList() {
     console.log(this.state.enteredName);
     console.log(this.state.enteredDist);
+    console.log(this.state.enteredUnit);
     console.log(this.state.tripList);
     console.log(this.state.tripList.length);
     let newTrip = {
       tid: this.state.tripList.length + 1,
       tname: this.state.enteredName,
       distance: this.state.enteredDist,
-      unit: "km",
+      unit: this.state.enteredUnit,
     };
     console.log(newTrip);
     this.setState({
@@ -41,6 +43,10 @@ class App extends Component {
     console.log("Distance entered.");
     this.setState({ enteredDist: event.target.value });
   }
+  updateEnteredUnit(event) {
+    console.log("Unit entered.");
+    this.setState({ enteredUnit: event.target.value });
+  }
 
   render() {
     return (
@@ -52,8 +58,10 @@ class App extends Component {
           enterFun={this.updateTripList}
           displayNameFromApp={this.state.enteredName}
           displayDistFromApp={this.state.enteredDist}
+          displayUnitFromApp={this.state.enteredUnit}
           changeFun1={this.updateEnteredName}
           changeFun2={this.updateEnteredDist}
+          changeFun3={this.updateEnteredUnit}
         />
         <hr />
         <TripHistory tripHistoryList={this.state.tripList} />
