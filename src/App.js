@@ -97,7 +97,7 @@ class App extends Component {
   // Function to change the state variable for the conditional rendering of the view.
   // When the button for the leaderboard is pressed. The variable is set to 1.
   changeViewToLeaderboard() {
-    if (this.state.leaderboardView == 1)
+    if (this.state.leaderboardView === 1)
       console.log(
         "Leaderboard button was pressed althoug already on the view."
       );
@@ -107,7 +107,7 @@ class App extends Component {
   // Function to change the state variable for the conditional rendering of the view.
   // When the button for the personal trips is pressed. The variable is set to 0.
   changeViewToTrips() {
-    if (this.state.leaderboardView == 0)
+    if (this.state.leaderboardView === 0)
       console.log(
         "Personal trips button was pressed althoug already on the view."
       );
