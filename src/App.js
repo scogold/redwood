@@ -134,9 +134,9 @@ class App extends Component {
             changeFun3={this.updateEnteredUnit}
           />
         )}
-        {this.state.leaderboardView === 0 &&
-          this.state.error !== null &&
-          this.state.error}
+        {this.state.leaderboardView === 0 && this.state.error !== null && (
+          <b style={{ color: "red" }}>{this.state.error}</b>
+        )}
         {this.state.leaderboardView === 0 && (
           <TripHistory tripHistoryList={this.state.tripList} />
         )}
