@@ -14,6 +14,7 @@ class App extends Component {
       enteredUnit: "km",
       enteredDist: 0,
       leaderboardView: 0, // Variable for the conditional rendering of the views.
+      error: null,
     };
     this.updateTripList = this.updateTripList.bind(this);
     this.updateEnteredName = this.updateEnteredName.bind(this);
@@ -23,37 +24,60 @@ class App extends Component {
     this.changeViewToTrips = this.changeViewToTrips.bind(this);
   }
   // Function to save a new trip.
-  updateTripList() {
+  updateTripList(event) {
     console.log(this.state.enteredName);
     console.log(this.state.enteredDist);
     console.log(this.state.enteredUnit);
     console.log(this.state.tripList);
     console.log(this.state.tripList.length);
 
-    // Source for CO2 factor: https://www.nimblefins.co.uk/average-co2-emissions-car-uk
-    var co2_savings;
+    event.preventDefault();
 
-    if (this.state.enteredUnit === "m") {
-      co2_savings = (this.state.enteredDist * 138.4) / 1000;
-    } else {
-      //for km
-      co2_savings = this.state.enteredDist * 138.4;
+    //enteredName must not be empty.
+    // If not, display an error message.
+    if (this.state.enteredName.trim() === "") {
+      this.setState({ error: "Trip field must not be empty." });
+      console.log(this.state.error);
+      //alert(this.state.error);
     }
 
-    let newTrip = {
-      tid: this.state.tripList.length + 1,
-      tname: this.state.enteredName,
-      distance: this.state.enteredDist,
-      unit: this.state.enteredUnit,
-      co2: Math.round(co2_savings * 100) / 100, //Round to 2 digits
-    };
-    console.log(newTrip);
-    this.setState({
-      tripList: this.state.tripList.concat(newTrip),
-      enteredName: "",
-      enteredDist: 0,
-    });
-    console.log(this.state.tripList);
+    //enteredName must include '-'.
+    else if (!/[a-z]-[a-z]/.test(this.state.enteredName)) {
+      this.setState({
+        error:
+          'Trip must include origin and destination as well as the character "-".',
+      });
+      console.log(this.state.error);
+      //alert(this.state.error);
+    }
+    //Else call enterFun & add it to the list
+    else {
+      this.setState({ error: null });
+      // Source for CO2 factor: https://www.nimblefins.co.uk/average-co2-emissions-car-uk
+      var co2_savings;
+
+      if (this.state.enteredUnit === "m") {
+        co2_savings = (this.state.enteredDist * 138.4) / 1000;
+      } else {
+        //for km
+        co2_savings = this.state.enteredDist * 138.4;
+      }
+
+      let newTrip = {
+        tid: this.state.tripList.length + 1,
+        tname: this.state.enteredName,
+        distance: this.state.enteredDist,
+        unit: this.state.enteredUnit,
+        co2: Math.round(co2_savings * 100) / 100, //Round to 2 digits
+      };
+      console.log(newTrip);
+      this.setState({
+        tripList: this.state.tripList.concat(newTrip),
+        enteredName: "",
+        enteredDist: 0,
+      });
+      console.log(this.state.tripList);
+    }
   }
   // Function to update state variable for the trip name.
   updateEnteredName(event) {
@@ -110,6 +134,9 @@ class App extends Component {
             changeFun3={this.updateEnteredUnit}
           />
         )}
+        {this.state.leaderboardView === 0 &&
+          this.state.error !== null &&
+          this.state.error}
         {this.state.leaderboardView === 0 && (
           <TripHistory tripHistoryList={this.state.tripList} />
         )}

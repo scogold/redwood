@@ -26,7 +26,7 @@ class AddTrip extends Component {
         <p>Add New Trip Here:</p>
 
         <div>
-          <form>
+          <form onSubmit={enterFun}>
             <input
               type="text"
               placeholder="Trip Name"
@@ -44,8 +44,8 @@ class AddTrip extends Component {
               <option> km </option>
               <option> m </option>
             </select>
+            <input type="submit" value="Submit" />
           </form>
-          <button onClick={enterFun}> Add Trip </button>
         </div>
       </div>
     );
