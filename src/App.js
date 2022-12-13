@@ -2,6 +2,7 @@ import "./styles.css";
 import React, { Component } from "react";
 import TripHistory from "./TripHistory";
 import AddTrip from "./AddTrip";
+import Leaderboard from "./Leaderboard";
 // Import from the made up trips.js to simulate the behaviour.
 import { trips } from "./trips";
 
@@ -13,6 +14,7 @@ class App extends Component {
       enteredName: "",
       enteredUnit: "km",
       enteredDist: 0,
+      enteredUser: "",
       leaderboardView: 0, // Variable for the conditional rendering of the views.
       error: null,
     };
@@ -20,6 +22,7 @@ class App extends Component {
     this.updateEnteredName = this.updateEnteredName.bind(this);
     this.updateEnteredDist = this.updateEnteredDist.bind(this);
     this.updateEnteredUnit = this.updateEnteredUnit.bind(this);
+    this.updateEnteredUser = this.updateEnteredUser.bind(this);
     this.changeViewToLeaderboard = this.changeViewToLeaderboard.bind(this);
     this.changeViewToTrips = this.changeViewToTrips.bind(this);
   }
@@ -66,6 +69,7 @@ class App extends Component {
       let newTrip = {
         tid: this.state.tripList.length + 1,
         tname: this.state.enteredName,
+        uname: this.state.enteredUser,
         distance: this.state.enteredDist,
         unit: this.state.enteredUnit,
         co2: Math.round(co2_savings * 100) / 100, //Round to 2 digits
@@ -74,6 +78,7 @@ class App extends Component {
       this.setState({
         tripList: this.state.tripList.concat(newTrip),
         enteredName: "",
+        enteredUser: "",
         enteredDist: 0,
       });
       console.log(this.state.tripList);
@@ -93,6 +98,11 @@ class App extends Component {
   updateEnteredUnit(event) {
     console.log("Unit entered.");
     this.setState({ enteredUnit: event.target.value });
+  }
+  // Function to update state variable for the user.
+  updateEnteredUser(event) {
+    console.log("Unit entered.");
+    this.setState({ enteredUser: event.target.value });
   }
   // Function to change the state variable for the conditional rendering of the view.
   // When the button for the leaderboard is pressed. The variable is set to 1.
@@ -129,9 +139,11 @@ class App extends Component {
             displayNameFromApp={this.state.enteredName}
             displayDistFromApp={this.state.enteredDist}
             displayUnitFromApp={this.state.enteredUnit}
+            displayUserFromApp={this.state.enteredUser}
             changeFun1={this.updateEnteredName}
             changeFun2={this.updateEnteredDist}
             changeFun3={this.updateEnteredUnit}
+            changeFun4={this.updateEnteredUser}
           />
         )}
         {this.state.leaderboardView === 0 && this.state.error !== null && (
@@ -140,6 +152,7 @@ class App extends Component {
         {this.state.leaderboardView === 0 && (
           <TripHistory tripHistoryList={this.state.tripList} />
         )}
+        {this.state.leaderboardView === 1 && (<Leaderboard tripHistoryList={this.state.tripList} />)}
       </div>
     );
   }
