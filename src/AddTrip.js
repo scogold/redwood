@@ -16,9 +16,11 @@ class AddTrip extends Component {
     const nameDisplayProp = this.props.displayNameFromApp; // Property of the current state of the entered trip name.
     const distDisplayProp = this.props.displayDistFromApp; // Property of the current state of the entered distance.
     const unitDisplayProp = this.props.displayUnitFromApp; // Property of the current state of the entered distance unit.
+    const userDisplayProp = this.props.displayUserFromApp; // Property of the current state of the entered distance unit.
     const nameUpdateFun = this.props.changeFun1; // Function that updates the trip name state variable.
     const distUpdateFun = this.props.changeFun2; // Function that updates the distance state variable.
     const unitUpdateFun = this.props.changeFun3; // Function that updates the distance unit state variable.
+    const userUpdateFun = this.props.changeFun4; // Function that updates the distance unit state variable.
     return (
       <div>
         <hr />
@@ -32,6 +34,12 @@ class AddTrip extends Component {
               placeholder="Trip Name"
               value={nameDisplayProp}
               onChange={nameUpdateFun}
+            />
+            <input
+              type="text"
+              placeholder="User Name"
+              value={userDisplayProp}
+              onChange={userUpdateFun}
             />
             {/* This input is for a positivie number as distance travelled. */}
             <input
