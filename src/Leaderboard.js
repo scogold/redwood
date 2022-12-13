@@ -24,7 +24,7 @@ class Leaderboard extends Component {
   nameSearch(filterName){
     return function (userObject){
       let targetName = userObject.uname;
-      return targetName.includes(filterName);
+      return targetName.length === filterName.length && targetName.includes(filterName);
     }
   }
   // Function to group by user

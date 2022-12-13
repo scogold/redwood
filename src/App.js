@@ -48,7 +48,7 @@ class App extends Component {
     }
 
     //enteredName must include '-'.
-    else if (!/[a-z]-[a-z]/.test(this.state.enteredName)) {
+    else if (!/^[a-zA-Z0-9]+-[a-zA-Z0-9]+$/.test(this.state.enteredName)) {
       this.setState({
         error:
           'Trip must include origin and destination as well as the character "-".',
@@ -156,9 +156,15 @@ class App extends Component {
           <TripHistory tripHistoryList={this.state.tripList} />
         )}
 
+        {this.state.leaderboardView === 1 && (
+          <Leaderboard tripHistoryList={this.state.tripList} />
+        )}
+
+
         <TotalSavings tripHistoryList={this.state.tripList} />
 
         {this.state.leaderboardView === 1 && (<Leaderboard tripHistoryList={this.state.tripList} />)}
+
 
       </div>
     );
