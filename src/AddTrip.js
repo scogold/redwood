@@ -29,31 +29,41 @@ class AddTrip extends Component {
 
         <div>
           {/** Form to enter the required information about a trip. On submit the input will be validated. */}
-          {/** Input for the trip name. It must contain an alphanumeric string of origin-destination.*/}
-          {/** Input for the user name. It must contain an alphanumeric string.*/}
-          {/** This input is for a positivie number as distance travelled. */}
           <form onSubmit={enterFun}>
+            {/** Input for the trip name. It must contain an alphanumeric string of origin-destination.*/}
             <input
-              type="{enterFun}
+              type="text"
               placeholder="Trip Name"
-U              value={nameDisplayProp}  U/p>dateFun}
-              >onChange={nameUpdatFun}
+              value={nameDisplayProp}
+              onChange={nameUpdateFun}
             />
-       t} t yinpup              type="/>pdaF*n}t"text"ameUtdateFex}t"              placeholder="User Nnme"
-              vhluge=usmrD<gisplayProp}
-i              onChange={usermUpdatFun}t      o laxpm">
-nv
- travlled. */}
-            <in*ut*
-              typ*e="number"
+            {/** Input for the user name. It must contain an alphanumeric string.*/}
+            <input
+              type="text"
+              placeholder="User Name"
+              value={userDisplayProp}
+              onChange={userUpdateFun}
+            />
+            {/** This input is for a positivie number as distance travelled. */}
+            <input
+              type="number"
               min="0"
               placeholder="Distance in km"
               value={distDisplayProp}
               onChange={distUpdateFun}
-               />
-                lec </svalue={unitDisplayProp} onChange={unitUpdateFun}>
-           }
-fiuriv>  i p</div>}rip;e    );xport default AddTrip;xport default AddTrip;exfault AddTrip;ex
-       <  }/form>
-   </d} }port default AddTrip;   <input type="submit" value="Submit" />
-       <t default AddTrip;xport default AddTrip;export default AddTrip;
+            />
+            {/** Input for the distance unit. Select a value from the dropdown menu.*/} 
+            <select value={unitDisplayProp} onChange={unitUpdateFun}>
+              <option> km </option>
+              <option> m </option>
+            </select>
+            {/** Submit button to after which the input data gets validated.*/}
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default AddTrip;
