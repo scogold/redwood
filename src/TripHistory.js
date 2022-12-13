@@ -1,8 +1,6 @@
 import "./styles.css";
 import React, { Component } from "react";
 
-// Import from the made up trips.js to simulate the behaviour.
-import { trips } from "./trips";
 
 // Create a new component to display all the trips entered by a user.
 // It should display the names of the trip, the travelled distance,
@@ -32,7 +30,8 @@ class TripHistory extends Component {
         <table>
           <thead>
             <tr>
-              <th>Name</th>
+              <th>Trip Name</th>
+              <th>User Name</th>
               <th>Distance</th>
               <th>CO2 savings</th>
             </tr>
@@ -42,6 +41,7 @@ class TripHistory extends Component {
             {tripHistoryList.sort(this.compareCo2).map((t) => (
               <tr key={t.tid}>
                 <td>{t.tname}</td>
+                <td>{t.uname}</td>
                 <td>
                   {t.distance} {t.unit}
                 </td>
