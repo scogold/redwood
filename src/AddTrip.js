@@ -1,9 +1,11 @@
 import "./styles.css";
 import React, { Component } from "react";
 
-// New component to display all the trips entered.
-// It should display the names of the trip, the travelled distance,
-// and the saved CO2 for each individual trip.
+// New component enter new trips.
+// The component consists of a form with inputs for
+// trip name, user name, trip distance, and trip unit.
+// Upon submit the input data gets validated.
+// The functions for handling the update and the submit are in the parent component.
 
 class AddTrip extends Component {
   constructor(props) {

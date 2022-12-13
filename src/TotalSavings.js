@@ -8,13 +8,13 @@ class TotalSavings extends Component {
     super(props);
   }
 
+  // function to aggregate the co2 savings
   sumCo2(a, c) {
     return a + c.co2;
   }
 
   render() {
     const tripHistoryList = this.props.tripHistoryList;
-
     return (
       <div>
         <hr />
