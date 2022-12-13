@@ -2,7 +2,10 @@ import "./styles.css";
 import React, { Component } from "react";
 import TripHistory from "./TripHistory";
 import AddTrip from "./AddTrip";
+
+import TotalSavings from "./TotalSavings";
 import Leaderboard from "./Leaderboard";
+
 // Import from the made up trips.js to simulate the behaviour.
 import { trips } from "./trips";
 
@@ -152,7 +155,11 @@ class App extends Component {
         {this.state.leaderboardView === 0 && (
           <TripHistory tripHistoryList={this.state.tripList} />
         )}
+
+        <TotalSavings tripHistoryList={this.state.tripList} />
+
         {this.state.leaderboardView === 1 && (<Leaderboard tripHistoryList={this.state.tripList} />)}
+
       </div>
     );
   }
